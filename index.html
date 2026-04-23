@@ -3,139 +3,155 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Romelia Atelier</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&family=Poppins:wght@300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: #fff;
-    color: #111;
+:root {
+    --pink-light: #f8e6ea;
+    --pink-main: #d88fa0;
+    --pink-dark: #b76e79;
 }
 
-/* MENU */
+body {
+    margin: 0;
+    background: var(--pink-light);
+    font-family: 'Poppins', sans-serif;
+}
+
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('portada.jpg') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 55px;
+    color: #f7cfd8;
+}
+
 .menu-icon {
     position: fixed;
     top: 20px;
     left: 20px;
     font-size: 28px;
     cursor: pointer;
-    z-index: 1000;
 }
 
 .menu {
     position: fixed;
+    left: -250px;
     top: 0;
-    left: -260px;
-    width: 260px;
+    width: 250px;
     height: 100%;
     background: white;
-    padding: 60px 30px;
-    transition: 0.4s;
+    padding: 40px;
+    transition: 0.3s;
 }
+
+.menu.active { left: 0; }
 
 .menu a {
     display: block;
     margin: 20px 0;
     text-decoration: none;
     color: black;
-    font-size: 18px;
 }
 
-.menu.active {
-    left: 0;
-}
-
-/* HERO */
-.hero {
-    height: 100vh;
-    background: url('https://images.unsplash.com/photo-1490750967868-88aa4486c946') center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.section-title {
+    background: var(--pink-dark);
+    color: white;
     text-align: center;
-    color: white;
+    padding: 10px;
+    margin: 40px 0 20px;
 }
 
-.hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 60px;
-    letter-spacing: 2px;
-}
-
-.hero p {
-    font-size: 18px;
-}
-
-/* SECCIONES */
 .section {
-    padding: 80px 20px;
-    max-width: 1100px;
-    margin: auto;
-}
-
-h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 36px;
-    margin-bottom: 30px;
-}
-
-/* GALERIA */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-}
-
-.card {
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.card img {
-    width: 100%;
-    transition: 0.4s;
-}
-
-.card:hover img {
-    transform: scale(1.05);
-}
-
-.price {
-    margin-top: 10px;
-}
-
-/* BOTON WHATS */
-.whatsapp {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: black;
-    color: white;
-    padding: 12px 18px;
-    text-decoration: none;
-}
-
-/* ANIMACIONES */
-.fade {
+    padding: 20px;
     opacity: 0;
-    transform: translateY(20px);
-    transition: 1s;
+    transform: translateY(30px);
+    transition: 0.6s ease;
 }
 
-.fade.show {
+.section.show {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* FOOTER */
-.footer {
-    background: #f5f5f5;
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.product {
+    background: white;
+    padding: 15px;
     text-align: center;
-    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.product img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.product button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: var(--pink-main);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+.footer {
+    text-align: center;
+    padding: 40px;
+}
+
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 22px;
+}
+
+.order-box {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 250px;
+}
+
+.order-box button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background: var(--pink-dark);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
 }
 </style>
 </head>
@@ -145,90 +161,110 @@ h2 {
 <div class="menu-icon" onclick="toggleMenu()">☰</div>
 
 <div class="menu" id="menu">
-    <a href="#inicio">Inicio</a>
-    <a href="#alta">Alta Costura</a>
-    <a href="#tipos">Tipos de Flor</a>
-    <a href="#bodas">Bodas</a>
-    <a href="#contacto">Contacto</a>
+<a href="#inicio">Inicio</a>
+<a href="#ramos">Bouquets</a>
+<a href="#eventos">Eventos</a>
+<a href="#contacto">Contacto</a>
 </div>
 
-<!-- HERO -->
 <section class="hero" id="inicio">
-    <div>
-        <h1>ROMELIA ATELIER</h1>
-        <p>Diseño floral del mes</p>
-    </div>
+<h1>Romelia Atelier</h1>
 </section>
 
-<!-- DESTACADOS -->
-<section class="section fade">
-    <h2>Diseños Destacados</h2>
-    <div class="gallery">
+<div class="section-title">Colección Signature</div>
+<div class="section">
+<div class="gallery">
 
-        <div class="card" onclick="alert('Más fotos aquí')">
-            <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df">
-            <div class="price">Primavera Atelier — $900</div>
-        </div>
+<div class="product">
+<img src="ramo1.jpg">
+<p>Ramo Rosas - $500</p>
+<button onclick="addToOrder('Ramo Rosas - $500')">Agregar</button>
+</div>
 
-        <div class="card" onclick="alert('Más fotos aquí')">
-            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93">
-            <div class="price">Elegancia Blanca — $1300</div>
-        </div>
+<div class="product">
+<img src="ramo2.jpg">
+<p>Ramo Premium - $650</p>
+<button onclick="addToOrder('Ramo Premium - $650')">Agregar</button>
+</div>
 
-    </div>
-</section>
+</div>
+</div>
 
-<!-- ALTA COSTURA -->
-<section class="section fade" id="alta">
-    <h2>Alta Costura Exclusiva</h2>
-    <p>Diseños únicos creados con flores premium, pensados como piezas de arte.</p>
-</section>
+<div class="section-title" id="eventos">Eventos</div>
+<div class="section">
+<div class="gallery">
+<img src="evento1.jpg">
+<img src="evento2.jpg">
+</div>
+</div>
 
-<!-- TIPOS -->
-<section class="section fade" id="tipos">
-    <h2>Tipos de Flor</h2>
-    <p>Rosas, peonías, tulipanes y más, seleccionadas cuidadosamente.</p>
-</section>
+<div class="section-title">Tu boda, tu estilo</div>
+<div class="section">
+<p style="text-align:center; max-width:800px; margin:auto;">
+Creamos arreglos únicos para hacer tu día inolvidable.
+</p>
+</div>
 
-<!-- BODAS -->
-<section class="section fade" id="bodas">
-    <h2>Tu boda, tu estilo</h2>
-    <p>
-    Creamos diseños florales de lujo y únicos en su tipo que aportan belleza,
-    movimiento y elegancia a cada momento.
-    </p>
-</section>
+<div class="section-title">Personalización</div>
+<div class="section">
+<p style="text-align:center; max-width:800px; margin:auto;">
+Todos nuestros diseños pueden ser completamente personalizados a tu gusto.
+Para cotizaciones y pedidos especiales, contáctanos directamente por WhatsApp.
+</p>
+</div>
 
-<!-- CONTACTO -->
-<section class="footer" id="contacto">
-    <h3>Romelia Atelier</h3>
-    <p>CDMX Sur y Poniente</p>
-    <p>56-54-73-19-02</p>
+<div class="section-title">Contacto</div>
+<div class="footer" id="contacto">
+<p>CDMX Sur y Poniente</p>
+<p>56-54-73-19-02</p>
+</div>
 
-    <p>
-        <a href="https://www.instagram.com/romelia.atelier" target="_blank">Instagram</a> |
-        <a href="https://www.tiktok.com/@romelia.atelier" target="_blank">TikTok</a>
-    </p>
-</section>
+<div class="order-box" id="orderBox">
+<p><strong>Tu pedido:</strong></p>
+<ul id="orderList"></ul>
+<button onclick="sendWhatsApp()">Enviar pedido</button>
+</div>
 
-<!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/525654731902" target="_blank">
-Ordenar por WhatsApp
+<a href="https://wa.me/525654731902" target="_blank" class="whatsapp">
+<i class="fab fa-whatsapp"></i>
 </a>
 
 <script>
+let order = [];
+
+function addToOrder(product) {
+    order.push(product);
+    updateOrderUI();
+}
+
+function updateOrderUI() {
+    const list = document.getElementById("orderList");
+    list.innerHTML = "";
+    order.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        list.appendChild(li);
+    });
+}
+
+function sendWhatsApp() {
+    if(order.length === 0) return;
+    let message = "Hola, quiero pedir:%0A";
+    order.forEach(item => {
+        message += "- " + item + "%0A";
+    });
+    window.open("https://wa.me/525654731902?text=" + message, "_blank");
+}
+
 function toggleMenu() {
     document.getElementById("menu").classList.toggle("active");
 }
 
-/* ANIMACIONES AL SCROLL */
-const fades = document.querySelectorAll('.fade');
-
-window.addEventListener('scroll', () => {
-    fades.forEach(el => {
-        const top = el.getBoundingClientRect().top;
+window.addEventListener("scroll", () => {
+    document.querySelectorAll(".section").forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
         if (top < window.innerHeight - 50) {
-            el.classList.add('show');
+            sec.classList.add("show");
         }
     });
 });
