@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Romelia Atelier</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&family=Poppins:wght@300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root {
+    --pink-light: #f8e6ea;
+    --pink-main: #d88fa0;
+    --pink-dark: #b76e79;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    background: var(--pink-light);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('portada.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 60px;
+    color: #fff;
+}
+
+/* MENU */
+.menu-icon {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.menu {
+    position: fixed;
+    left: -260px;
+    top: 0;
+    width: 260px;
+    height: 100%;
+    background: white;
+    padding: 40px 25px;
+    transition: 0.3s;
+    z-index: 999;
+}
+
+.menu.active { left: 0; }
+
+.menu a {
+    display: block;
+    margin: 20px 0;
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+
+.section-title {
+    background: var(--pink-dark);
+    color: white;
+    text-align: center;
+    padding: 12px;
+    margin: 50px 0 20px;
+}
+
+.section {
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.6s ease;
+}
+
+.section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+}
+
+.product {
+    background: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.product img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.product button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: var(--pink-main);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.card-img {
+    background: white;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card-img img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal img {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 15px;
+}
+
+.footer {
+    text-align: center;
+    padding: 40px;
+}
+
+.social a {
+    font-size: 26px;
+    margin: 0 10px;
+    color: var(--pink-main);
+}
+
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 22px;
+}
+
+.order-box {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 250px;
+}
+
+.order-box button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background: var(--pink-dark);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.featured {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.featured img {
+    width: 90%;
+    max-width: 500px;
+    border-radius: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+<div class="menu" id="menu">
+<a href="#inicio" onclick="toggleMenu()">Inicio</a>
+<a href="#ramos" onclick="toggleMenu()">Bouquets</a>
+<a href="#eventos" onclick="toggleMenu()">Eventos</a>
+<a href="#contacto" onclick="toggleMenu()">Contacto</a>
+</div>
+
+<section class="hero" id="inicio">
+<h1>Romelia Atelier</h1>
+</section>
+
+<div class="section-title">Frase del Mes</div>
+<div class="featured">
+<img src="madres.jpg" onclick="openModal(this.src)">
+<p>💐</p>
+</div>
+
+<div class="section-title" id="ramos">Bouquets</div>
+<div class="section">
+<div class="gallery">
+
+<div class="product"><img src="ramo1.jpg" onclick="openModal(this.src)"><p>Ramo 1 - $500</p><button onclick="addToOrder('Ramo 1 - $500')">Agregar</button></div>
+<div class="product"><img src="ramo2.jpg" onclick="openModal(this.src)"><p>Ramo 2 - $550</p><button onclick="addToOrder('Ramo 2 - $550')">Agregar</button></div>
+<div class="product"><img src="ramo3.jpg" onclick="openModal(this.src)"><p>Ramo 3 - $600</p><button onclick="addToOrder('Ramo 3 - $600')">Agregar</button></div>
+<div class="product"><img src="ramo4.jpg" onclick="openModal(this.src)"><p>Ramo 4 - $650</p><button onclick="addToOrder('Ramo 4 - $650')">Agregar</button></div>
+<div class="product"><img src="ramo5.jpg" onclick="openModal(this.src)"><p>Ramo 5 - $700</p><button onclick="addToOrder('Ramo 5 - $700')">Agregar</button></div>
+<div class="product"><img src="ramo6.jpg" onclick="openModal(this.src)"><p>Ramo 6 - $750</p><button onclick="addToOrder('Ramo 6 - $750')">Agregar</button></div>
+<div class="product"><img src="ramo7.jpg" onclick="openModal(this.src)"><p>Ramo 7 - $800</p><button onclick="addToOrder('Ramo 7 - $800')">Agregar</button></div>
+<div class="product"><img src="ramo8.jpg" onclick="openModal(this.src)"><p>Ramo 8 - $850</p><button onclick="addToOrder('Ramo 8 - $850')">Agregar</button></div>
+<div class="product"><img src="ramo9.jpg" onclick="openModal(this.src)"><p>Ramo 9 - $900</p><button onclick="addToOrder('Ramo 9 - $900')">Agregar</button></div>
+
+</div>
+</div>
+
+<div class="section-title">Cajas de Flores</div>
+<div class="section">
+<div class="gallery">
+<div class="card-img"><img src="caja1.jpg" onclick="openModal(this.src)"></div>
+<div class="card-img"><img src="caja2.jpg" onclick="openModal(this.src)"></div>
+<div class="card-img"><img src="caja3.jpg" onclick="openModal(this.src)"></div>
+</div>
+</div>
+
+<div class="section-title" id="eventos">Eventos</div>
+<div class="section">
+<div class="gallery">
+<div class="card-img"><img src="evento1.jpg" onclick="openModal(this.src)"></div>
+<div class="card-img"><img src="evento2.jpg" onclick="openModal(this.src)"></div>
+</div>
+</div>
+
+<div class="section-title">Bodas</div>
+<div class="section">
+<div class="gallery">
+<div class="card-img"><img src="boda1.jpg" onclick="openModal(this.src)"></div>
+</div>
+<p style="text-align:center; max-width:800px; margin:auto;">
+Creamos arreglos únicos para hacer tu día inolvidable.
+</p>
+</div>
+
+<div class="section-title">Personalización</div>
+<div class="section">
+<p style="text-align:center; max-width:800px; margin:auto;">
+Todos nuestros diseños pueden ser completamente personalizados a tu gusto.
+Para cotizaciones y pedidos especiales, contáctanos directamente por WhatsApp.
+</p>
+</div>
+
+<div class="section-title">Contacto</div>
+<div class="footer" id="contacto">
+<p>CDMX Sur y Poniente</p>
+<p>56-54-73-19-02</p>
+
+<div class="social">
+<a href="https://www.instagram.com/romelia.atelier" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://www.tiktok.com/@romelia.atelier" target="_blank"><i class="fab fa-tiktok"></i></a>
+</div>
+
+</div>
+
+<div class="order-box" id="orderBox">
+<p><strong>Tu pedido:</strong></p>
+<ul id="orderList"></ul>
+<button onclick="sendWhatsApp()">Enviar pedido</button>
+</div>
+
+<a href="https://wa.me/525654731902" target="_blank" class="whatsapp">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+<div id="modal" class="modal" onclick="closeModal()">
+<img id="modalImg">
+</div>
+
+<script>
+let order = [];
+
+function addToOrder(product) {
+    order.push(product);
+    updateOrderUI();
+}
+
+function updateOrderUI() {
+    const list = document.getElementById("orderList");
+    list.innerHTML = "";
+    order.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        list.appendChild(li);
+    });
+}
+
+function sendWhatsApp() {
+    if(order.length === 0) return;
+    let message = "Hola, quiero pedir:%0A";
+    order.forEach(item => {
+        message += "- " + item + "%0A";
+    });
+    window.open("https://wa.me/525654731902?text=" + message, "_blank");
+}
+
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("active");
+}
+
+function openModal(src) {
+    const modal = document.getElementById("modal");
+    modal.style.display = "flex";
+    document.getElementById("modalImg").src = src;
+}
+
+function closeModal() {
+    document.getElementById("modal").style.display = "none";
+}
+
+window.addEventListener("scroll", () => {
+    document.querySelectorAll(".section").forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 50) {
+            sec.classList.add("show");
+        }
+    });
+});
+</script>
+
+</body>
+</html>
